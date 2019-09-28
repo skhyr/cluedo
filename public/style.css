@@ -1,6 +1,18 @@
-body{
+#game{
+  display:none;
+}
+
+{
   background-color: #111111;
   color: #eeeeee;
+}
+
+#waitForReady{
+  display: none;
+
+}
+#roomChoice{
+  
 }
 
 #board{
