@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="0" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>cluedo</title>
+      <link rel="shortcut icon" type="image/x-icon" href="icon.ico" />
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h4 class="s12 center-align">Cluedo</h4>
+      <div class="" id="board">
+
+        <div class="column" id="column1">
+          <div class="room" id="room1a"></div>
+          <div class="field" id="f1"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+          <div class="field" id="f1"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+          <div class="field" id="f1"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+          <div class="field" id="f1"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+          <div class="field" id="f1"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+          <div class="field" id="f1"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+          <div class="field" id="f1"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+          <div class="room" id="room1b"></div>
+          <div class="field" id="f1"></div><div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+          <div class="field" id="f1"></div><div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+
+          <div class="field" id="f1"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+            <div class="field" id="f1"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+              <div class="field" id="f1"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+                <div class="endOfLine"></div>
+          <div class="field" id="f1"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+            <div class="field" id="f1"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+              <div class="field" id="f1"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+                <div class="endOfLine"></div>
+
+          <div class="room" id="room2a"></div>
+          <div class="field" id="f1"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+              <div class="field" id="f1"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+          <div class="room" id="room2b"></div>
+          <div class="field" id="f1"></div><div class="endOfLine"></div>
+          <div class="field" id="f1"></div><div class="endOfLine"></div>
+          <div class="field" id="f1"></div><div class="endOfLine"></div>
+          <div class="field" id="f1"></div><div class="endOfLine"></div>
+          <div class="field" id="f1"></div><div class="endOfLine"></div>
+          <div class="field" id="f1"></div><div class="endOfLine"></div>
+          <div class="field" id="f1"></div><div class="endOfLine"></div>
+          <div class="room" id="room2c"></div>
+          <div class="field" id="f1"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+              <div class="field" id="f1"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+
+          <div class="field" id="f1"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+            <div class="field" id="f1"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+              <div class="field" id="f1"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+                <div class="endOfLine"></div>
+              <div class="field" id="f1"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+                <div class="field" id="f1"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+                  <div class="field" id="f1"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+                    <div class="endOfLine"></div>
+
+          <div class="room" id="room3a"></div>
+          <div class="field" id="f1"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+          <div class="room" id="room3b"></div>
+          <div class="field" id="f1"></div><div class="endOfLine"></div>
+          <div class="field" id="f1"></div><div class="endOfLine"></div>
+          <div class="field" id="f1"></div><div class="endOfLine"></div>
+          <div class="field" id="f1"></div><div class="endOfLine"></div>
+          <div class="field" id="f1"></div><div class="endOfLine"></div>
+          <div class="field" id="f1"></div><div class="endOfLine"></div>
+          <div class="field" id="f1"></div><div class="endOfLine"></div>
+        </div>
+
+        <div class="column" id="column2">
+          <div style="float: left">
+            <div class="room" id="room4"></div>
+            <div class="field" id="f2"></div><div class="endOfLine"></div>
+            <div class="field" id="f2"></div><div class="endOfLine"></div>
+            <div class="field" id="f2"></div><div class="endOfLine"></div>
+            <div class="field" id="f2"></div><div class="endOfLine"></div>
+            <div class="field" id="f2"></div><div class="endOfLine"></div>
+            <div class="field" id="f2"></div><div class="endOfLine"></div>
+            <div class="field" id="f2"></div><div class="endOfLine"></div>
+            <div class="field" id="f2"></div>
+          </div>
+          <div class="room" id="room5a"></div><div class="endOfLine"></div>
+          <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+            <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+              <div class="field" id="f2"></div>
+
+          <div class="room" id="room5b"></div>
+          <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+
+            <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+             <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+                <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+                    <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+                      <div class="endOfLine"></div>
+
+                      <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+                       <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+                          <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+                              <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+                                <div class="endOfLine"></div>
+
+                    <div class="hehe" style="float:left">
+                      <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+                      <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+                      <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+                      <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+                      <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+                      <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+                      <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+                    </div>
+
+                    <div class="room" id="room6"></div>
+                    <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+                    <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+                    <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+                    <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+                    <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+                    <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+                    <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+
+                    <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+                     <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+                        <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+                            <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+                              <div class="endOfLine"></div>
+
+                    <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+                      <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+                          <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+                              <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+                                <div class="endOfLine"></div>
+
+                  <div class="hehe" style="float:left">
+                    <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+                    <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+                    <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+                    <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+                  </div>
+
+                  <div class="room" id="room7a"></div>
+
+                  <div class="field" id="f2"></div><div class="field" id="f2"></div>
+                  <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+                  <div class="field" id="f2"></div><div class="field" id="f2"></div>
+                  <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+                  <div class="field" id="f2"></div><div class="field" id="f2"></div>
+                  <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+                  <div class="field" id="f2"></div><div class="field" id="f2"></div>
+                  <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+
+                  <div class="hehe" style="float:left">
+                  <div class="field" id="f2"></div><div class="endOfLine"></div>
+                  <div class="field" id="f2"></div><div class="endOfLine"></div>
+                  <div class="field" id="f2"></div><div class="endOfLine"></div>
+                  <div class="field" id="f2"></div><div class="endOfLine"></div>
+                  <div class="field" id="f2"></div><div class="endOfLine"></div>
+                  <div class="field" id="f2"></div><div class="endOfLine"></div>
+                  </div>
+
+                  <div class="room" id="room7b"></div>
+                  <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+                  <div class="endOfLine"></div>
+                  <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+                  <div class="endOfLine"></div>
+                  <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+                  <div class="endOfLine"></div>
+                  <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+                  <div class="endOfLine"></div>
+                  <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+                  <div class="endOfLine"></div>
+                  <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+                  <div class="endOfLine"></div>
+
+
+
+        </div>
+
+        <div class="column" id="column3">
+          <div style="float:left">
+            <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+            <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+            <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+            <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+            <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+            <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+            <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+            <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+            <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="endOfLine"></div>
+          </div>
+
+          <div class="room" id="room8"></div><div class="endOfLine"></div>
+
+          <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+          <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+          <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+          <div class="endOfLine"></div>
+          <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+          <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+          <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+          <div class="endOfLine"></div>
+
+          <div class="room" id="room9"></div><div class="endOfLine"></div>
+
+          <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+          <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+          <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+          <div class="endOfLine"></div>
+          <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+          <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+          <div class="field" id="f2"></div><div class="field" id="f2"></div><div class="field" id="f2"></div>
+          <div class="endOfLine"></div>
+
+          <div class="room" id="room10"></div>
+
+
+
+
+
+
+
+
+
+        </div>
+
+      </div>
+    </div>
+
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+  </body>
+</html>
