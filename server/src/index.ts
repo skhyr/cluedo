@@ -1,5 +1,5 @@
 import express from 'express';
-import socket from 'socket.io';
+import socketio from 'socket.io';
 import cors from 'cors';
 
 import { resolve } from 'path';
@@ -12,16 +12,17 @@ const server = app.listen(process.env.PORT || 5000, ()=>{
     console.log('server up');
 });
 
-const io = socket(server);
-//export const socketsHandler = new SocketsHandler(io);
+import gamesRoute from './routes/game';
+const io = socketio(server);
+const socketHandler = gamesRoute(io);
+io.on('connection', (socket) => {
+    socketHandler.socketHandle(socket);
+});
+
 
 export const gameRoomService = new GameRoomService();
-gameRoomService.newGame();
-gameRoomService.newGame();
-gameRoomService.newGame();
-gameRoomService.newGame();
-gameRoomService.newGame();
-gameRoomService.newGame();
+gameRoomService.newGame(socketHandler.gameCallback);
+gameRoomService.newGame(socketHandler.gameCallback);
 
 app.use(express.json());
 app.use(cors());

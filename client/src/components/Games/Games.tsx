@@ -1,6 +1,7 @@
-import React, {useEffect} from 'react';
+import React, { useContext } from 'react';
 import useGameRoom from '../../hooks/useGameRoom';
 import {History} from 'history';
+import { MainContext } from '../../contexts/MainContext';
 interface Props{
     token: string;
     history: History;
@@ -8,8 +9,9 @@ interface Props{
 
 const Games: React.FC<Props> = ({token, history}) =>{
 
-    const {gameRooms, joinGame} = useGameRoom(10000, (gameId: string)=>{
-        history.push(`/game/${gameId}`)
+    const { setToken } = useContext(MainContext);
+    const { gameRooms, joinGame } = useGameRoom(10000, (gameId: string)=>{
+        history.push(`/games/${gameId}`);
     });
 
 

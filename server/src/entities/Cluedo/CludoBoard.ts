@@ -3,7 +3,7 @@ export default class CludoBoard{
 
     constructor(){
         this.fields = [];
-        for(let i = 0; i < 30; i++)
+        for(let i = 0; i < 25; i++)
             this.fields.push([]);
     }
 
