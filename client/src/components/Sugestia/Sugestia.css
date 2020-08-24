@@ -1,0 +1,30 @@
+.Sugestia{
+    background-color: rgb(236, 236, 236);
+    color: rgb(0, 0, 0);
+    flex: 1;
+    min-width: 20%;
+    margin: 10px 15px;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+}
+
+.Sugestia > .descTop{
+    font-size: 20px;
+    font-weight: 200;
+}
+
+.Sugestia > img{
+    flex: 1;
+    outline: none;
+    object-fit: cover;
+    overflow: hidden;
+    padding: 0 0px;
+}
+
+.Sugestia > .desc{
+    font-size: 20px;
+    font-weight: 600;
+    margin: 4px 0px
+}

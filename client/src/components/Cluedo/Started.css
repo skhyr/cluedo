@@ -1,21 +1,36 @@
+.Started{
+    display: flex;
+    background-color: rgba(70, 131, 180, 0.561);
+}
+
+.started > .sidebar{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
 .board{
     display: grid;
     grid-template: repeat(25, 1fr) / repeat(25, 1fr);
     height: 100vmin;
     width: 100vmin;
-    background-color: rgba(0, 255, 255, 0.24);
+    background-color: rgb(204, 255, 255);
     position: relative;
 }
 
-.board div{
+.board .field{
     background-color: rgba(137, 43, 226, 0.267);
     max-height: 100%;
     max-width: 100%;
     border: 1px solid rgba(0, 0, 0, 0.376);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .board .room{
     background-color: rgb(100, 204, 114);
+    pointer-events: none;
 }
 
 .board .room.r0{
@@ -71,7 +86,45 @@
 
 .board .pawn{
     background-color: rgb(0, 0, 0);
-    height: 20px;
-    width: 20px;
+    height: 75%;
+    width: 75%;
     z-index: 200;
+    border-radius: 50%;
+}
+
+#pawn0{
+    background-color: rgb(224, 46, 46);
+}
+#pawn1{
+    background-color: rgb(55, 128, 212);
+}
+#pawn2{
+    background-color: rgb(250, 247, 95);
+}
+#pawn3{
+    background-color: rgb(105, 200, 42);
+}
+#pawn4{
+    background-color: rgb(182, 37, 226);
+}
+#pawn5{
+    background-color: rgb(255, 255, 255);
+}
+
+.BottomBar{
+    height: 100vmin;
+    background-color: rgb(117, 66, 37);
+    display: flex;
+}
+
+.ucard{
+    flex: 3
+}
+
+.cards{
+    flex:3;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
 }

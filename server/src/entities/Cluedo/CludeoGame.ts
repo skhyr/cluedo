@@ -10,8 +10,13 @@ export class CludoGame{
     players: Player[];
     turn: number;
     id: string;
+    dice: number;
     truthSource: SugestieCard[];
     callback: (eventType: string)=>void;
+    turnCheckList:{
+        dice: boolean,
+        move: boolean,
+    }
 
     constructor(id: string, callback: (eventType: string)=>void){
         this.board = new CludoBoard();
@@ -20,6 +25,11 @@ export class CludoGame{
         this.id = id;
         this.callback = callback;
         this.truthSource = [];
+        this.dice = 0;
+        this.turnCheckList = {
+            dice: false,
+            move: false,
+        }
     }
 
     joinPlayer(player: Player){
@@ -31,12 +41,18 @@ export class CludoGame{
     startGame(){
         if( [0, 1, 5].includes(this.players.length) ) return;
         this.dealCards();
+        this.setPawns();
         this.turn = 0;
         this.callback('StartingGame');
     }
 
     nextTurn(){
         this.turn = (this.turn+1)%this.players.length;
+        this.turnCheckList = {
+            dice: false,
+            move: false,
+        }
+        this.callback('nextTurn');
     }
 
     dealCards(){
@@ -76,17 +92,30 @@ export class CludoGame{
     }
 
     setPawns(){
-        const starts = [{x: 1, y: 7},{x: 1, y: 17},
-                        {x: 8, y: 25},{x: 25, y: 19},
-                        {x: 25, y: 7},{x: 15, y: 1},]
+        const starts = [{x: 0, y: 6},{x: 0, y: 16},
+                        {x: 7, y: 24},{x: 24, y: 18},
+                        {x: 24, y: 6},{x: 17, y: 0},]
         this.players.forEach((player, index)=>{
             player.position = starts[index];
         })
     }
 
     move(playerId: string, to: {x:number, y:number}){
-        this.players.find(player=>player.id===playerId)
-            ?.setPosition(to);
+        if(this.turnCheckList.move || !this.turnCheckList.dice) return;
+        let player = this.players.find(player=>player.id===playerId);
+        if(!player) return; 
+        if(!this.canMove(player.position, to, this.dice)) return;
+
+        player.setPosition(to);
+        this.callback('playerMoved');
+        this.nextTurn();
+    }
+
+    canMove(from:{x:number, y:number}, to:{x:number, y:number}, inD:number){
+        let deltaX = Math.abs(from.x - to.x );
+        let deltaY = Math.abs(from.y - to.y );
+        if(deltaX+deltaY > inD) return false;
+        else return true;
     }
 
     getCardsofPlayer(playerId: string){
@@ -98,5 +127,17 @@ export class CludoGame{
         return this.players.reduce((prev, curr)=>{
             return curr.ready ? prev+1 : prev;
         }, 0);
+    }
+
+    isTurn(id: string){
+        if( this.players[this.turn].id === id) return true;
+        else return false;
+    }
+
+    throwDice(){
+        if(this.turnCheckList.dice) return;
+        this.dice = rand(1, 6) + rand(1, 6);
+        this.callback('diceThrown');
+        this.turnCheckList.dice = true;
     }
 }
