@@ -4,3 +4,4 @@ export { default as Games } from './Games/Games';
 export { default as Game } from './Game/Game';
 export { default as Cluedo } from './Cluedo/Cluedo';
 export { default as Sugestia } from './Sugestia/Sugestia';
+export { default as Paper } from './Paper/Paper';

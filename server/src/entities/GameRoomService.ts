@@ -13,9 +13,9 @@ export default class GameRoomService{
         return this.games;
     }
 
-    newGame(callback: (eventType:string, game: any)=>void){
+    newGame(callback: (eventType:string, game: string, data?:any)=>void){
         let id = uuidv4();
-        let newGame = new CludoGame(id, (eventType: string) => callback(eventType, id) );
+        let newGame = new CludoGame(id, (eventType: string, data?:any) => callback(eventType, id, data) );
         this.games.push(newGame);
         return newGame;
     }

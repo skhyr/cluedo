@@ -8,12 +8,13 @@ interface Props{
 
 const Cluedo: React.FC<Props> = ({ gameId }) =>{
 
-    const {gameStarted, players, handleReadyClick, ready, turn, dice, move, player} = useCluedo( gameId )
+    const {gameStarted, players, handleReadyClick, ready, turn, dice, move, player, guess, makeGuess, guessAnswer}
+         = useCluedo( gameId )
 
     return(
     gameStarted ? (
         <div className="Cluedo">
-            <Started players={players} turn={turn} dice={dice} move={move} player={player}/>
+            <Started players={players} turn={turn} dice={dice} move={move} player={player} guess={guess} makeGuess={makeGuess} guessAnswer={guessAnswer} />
         </div>
     ) : (
         <div className="Cluedo">

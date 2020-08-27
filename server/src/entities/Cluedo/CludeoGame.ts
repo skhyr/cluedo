@@ -4,6 +4,7 @@ import SugestieCard from './SugestieCard';
 import Player from './Player';
 import shuffle from '../../utils/shuffle';
 import rand from "../../utils/rand";
+import inRoom from "../../utils/inRoom";
 
 export class CludoGame{
     board: CludoBoard;
@@ -12,13 +13,15 @@ export class CludoGame{
     id: string;
     dice: number;
     truthSource: SugestieCard[];
-    callback: (eventType: string)=>void;
+    callback: (eventType: string, data?:any)=>void;
     turnCheckList:{
         dice: boolean,
         move: boolean,
-    }
+        guess: boolean
+    };
+    shouldShowSugestie: number;
 
-    constructor(id: string, callback: (eventType: string)=>void){
+    constructor(id: string, callback: (eventType: string, data?:any)=>void){
         this.board = new CludoBoard();
         this.players = [];
         this.turn = -1;
@@ -29,7 +32,9 @@ export class CludoGame{
         this.turnCheckList = {
             dice: false,
             move: false,
+            guess: false
         }
+        this.shouldShowSugestie = 0;
     }
 
     joinPlayer(player: Player){
@@ -51,6 +56,7 @@ export class CludoGame{
         this.turnCheckList = {
             dice: false,
             move: false,
+            guess: false
         }
         this.callback('nextTurn');
     }
@@ -108,7 +114,10 @@ export class CludoGame{
 
         player.setPosition(to);
         this.callback('playerMoved');
-        this.nextTurn();
+        this.turnCheckList.move = true;
+
+        console.log( inRoom(to.x, to.y) );
+        if( inRoom(to.x, to.y) === -1 ) this.nextTurn();
     }
 
     canMove(from:{x:number, y:number}, to:{x:number, y:number}, inD:number){
@@ -139,5 +148,41 @@ export class CludoGame{
         this.dice = rand(1, 6) + rand(1, 6);
         this.callback('diceThrown');
         this.turnCheckList.dice = true;
+    }
+
+    makeGuess(character: number, weapon: number, room: number, who: number){
+        if( inRoom( this.players[who].position.x, this.players[who].position.y ) !== room ) return;
+        if(!this.turnCheckList.dice || !this.turnCheckList.move || this.turnCheckList.guess) return;
+        this.shouldShowSugestie = this.countShouldShowSugestie(character, weapon, room);
+        this.callback('guess', [{type: 'character', nr: character}, {type: 'weapon', nr: weapon}, {type: 'room', nr: room}]);
+        this.turnCheckList.guess = true;
+        if(this.shouldShowSugestie === 0)this.nextTurn();
+    }
+
+    guessAnswer({nr, type}: SugestieCard, ownerId: string){
+        console.log(nr, type);
+        this.callback('guessAnswer', {nr, type, ownerId});
+        this.shouldShowSugestie--;
+        if(this.shouldShowSugestie === 0) this.nextTurn();
+    }
+
+    countShouldShowSugestie(character: number, weapon: number, room: number){
+        let number = 0;
+        this.players.forEach((player, index)=>{
+            const out = player.sugestie.some(sugestia => {
+                if(sugestia.type === 'character') {
+                    return sugestia.nr == character;
+                }
+                else if(sugestia.type === 'weapon') {
+                    return sugestia.nr == weapon
+                }
+                else if(sugestia.type === 'room') {
+                    return sugestia.nr == room
+                }
+                else return false;
+            } );
+            if(out && index !== this.turn) number++;
+        });
+        return number;
     }
 }
