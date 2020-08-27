@@ -141,7 +141,7 @@
 
 .board .pawn::after{
     content: '\265F';
-    font-size: 3em;
+    font-size: 7vmin;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -192,6 +192,7 @@
     margin-top: 30px;
     display: grid;
     grid-template: 1fr / 1fr 1fr 1fr;
+    height: 60vh;
 }
 .sidebar > .guess > div > .Sugestia{
     position: relative;
@@ -215,4 +216,62 @@
 .sidebar > .guess > div{
     display: grid;
     grid-template: 1fr / 1fr;
+}
+
+.sidebar > .makeGuess > button{
+    height: 50px;
+    width: 150px;
+    font-size: 1.1em;
+    background-color: brown;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: rgb(235, 235, 235);
+    border-top: 2px rgb(190, 64, 64) solid;
+    border-left: 2px rgb(190, 63, 63) solid;
+    border-right: 2px rgb(109, 13, 13) solid;
+    border-bottom: 2px rgb(109, 13, 13) solid;
+}
+.sidebar > .makeGuess > button:hover{
+    background-color: rgb(182, 24, 24);
+}
+
+.sidebar > .makeGuess > button:active{
+    border: none;
+    transform: scale(.95) translate(-2px, -2px);
+}
+
+.nwinner{
+    display: none;
+}
+
+.winner{
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.911);
+    z-index: 233;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2em;
+    font-weight: 600;
+    flex-direction: column;
+}
+
+.winner > div:first-of-type{
+    font-size: .5em;
+    font-weight: 200;
+}
+
+.guess.lost{
+    background-color: rgba(255, 0, 0, 0.377);
+}
+
+.player.lost{
+    color: rgba(255, 0, 0, 0.356) !important;
 }

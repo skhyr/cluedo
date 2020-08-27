@@ -45,3 +45,7 @@
     background-color: rgba(128, 128, 128, 0);
     height: 100%;
 }
+
+.Paper span{
+    cursor: pointer;
+}

@@ -10,7 +10,8 @@ interface Props{
         position:{
             x: number,
             y:number,
-        }
+        },
+        lost: boolean,
     }[],
     dice:{
         result: number,
@@ -34,8 +35,11 @@ interface Props{
         nr: number,
         owner?: string;
     }[],
-    makeGuess: (data:any)=>void;
+    makeGuess: ()=>void;
     guessAnswer: (data:any)=>void;
+    selectToGuess: (type: "character" | "weapon" | "room", id: number)=>void;
+    winner: null | number;
+    lost: boolean;
 }
 
 const genBoard = () =>{
@@ -45,19 +49,9 @@ const genBoard = () =>{
    return stack;
 }
 
-const Started: React.FC<Props> = ( {players, dice, turn, move, player, guess, makeGuess, guessAnswer}) =>{
+const Started: React.FC<Props> = ( { players, dice, turn, move, player, guess, makeGuess, guessAnswer, selectToGuess, winner, lost}) =>{
 
     const [ board ] = useState(genBoard());
-
-    const handleFormSubmit = (event: any) =>{
-        event.preventDefault();
-        const data = {
-            character: parseInt(event.target.character.value, 10),
-            weapon: parseInt( event.target.weapon.value, 10),
-            room: parseInt( event.target.room.value, 10),
-        }
-        makeGuess(data);
-    }
 
     return(<>
         <div className="Started">
@@ -124,11 +118,11 @@ const Started: React.FC<Props> = ( {players, dice, turn, move, player, guess, ma
                 <div className="players">
                 {players.map((player, index)=>
                     <div className="player" key={index}>
-                        <div className={ index===turn ? "player now" : "player"}>{player.id}</div>
+                        <div className={ index===turn ? "player now" : "player" + player.lost ? "lost" : ""}>{player.id}</div>
                     </div>
                 )}
                 </div>
-                <div className="guess">
+                <div className={ lost ? "guess lost": "guess" }>
                     {guess.map(card=>
                         <div className={card.owner? "CardBox withOwner":"CardBox"}>
                             <Sugestia type={card.type} nr={card.nr}/>
@@ -141,25 +135,22 @@ const Started: React.FC<Props> = ( {players, dice, turn, move, player, guess, ma
                     <button onClick={dice.throw}>dice</button>
                 </div>
                 <div className="makeGuess">
-                    <form onSubmit={handleFormSubmit}>
-                        <input type="number" name="character" />
-                        <input type="number" name="weapon" />
-                        <input type="number" name="room" />
-                        <button> guess </button>
-                    </form>
+                    <button onClick={makeGuess}> guess </button>
                 </div>
             </div>
         </div>
         <div className="BottomBar">
             <div className="ucard">
-                    <Paper />
+                    <Paper selectToGuess={selectToGuess} />
             </div>
             <div className="cards">
                 {player.sugestie?.map(sugestia=>
                     <Sugestia nr={sugestia.nr} type={sugestia.type} click={guessAnswer} />
                 )}
             </div>
+            {winner}
         </div>
+                <div className={typeof winner === 'number' ? 'winner': 'nwinner'}> <div>wygrywa</div><div> {typeof winner === 'number' && players[winner].id}</div></div>
         </>
     );
 }
