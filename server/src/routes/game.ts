@@ -80,6 +80,12 @@ export default (io: socketio.Server)=>{
                     if(!game) return;
                     io.to(game.players[game.turn].id).emit('guessAnswer', data);
                     break;
+                case 'won':
+                    io.to(gameId).emit('won', data);
+                    break;
+                case 'nwon':
+                    io.to(gameId).emit('nwon', data);
+                    break;
                 default:
                     break;
             }

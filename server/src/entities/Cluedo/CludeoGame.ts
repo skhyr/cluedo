@@ -53,6 +53,10 @@ export class CludoGame{
 
     nextTurn(){
         this.turn = (this.turn+1)%this.players.length;
+        if( this.players[this.turn].lost ){
+            this.nextTurn();
+            return;
+        }
         this.turnCheckList = {
             dice: false,
             move: false,
@@ -151,12 +155,31 @@ export class CludoGame{
     }
 
     makeGuess(character: number, weapon: number, room: number, who: number){
+        if( inRoom( this.players[who].position.x, this.players[who].position.y ) === 9 ){
+            this.indictment(character, weapon, room);
+            return;
+        }
         if( inRoom( this.players[who].position.x, this.players[who].position.y ) !== room ) return;
         if(!this.turnCheckList.dice || !this.turnCheckList.move || this.turnCheckList.guess) return;
         this.shouldShowSugestie = this.countShouldShowSugestie(character, weapon, room);
         this.callback('guess', [{type: 'character', nr: character}, {type: 'weapon', nr: weapon}, {type: 'room', nr: room}]);
         this.turnCheckList.guess = true;
         if(this.shouldShowSugestie === 0)this.nextTurn();
+    }
+
+    indictment(character: number, weapon: number, room: number){
+        if(
+            character === this.truthSource.find(el=>el.type === 'character')?.nr &&
+            weapon === this.truthSource.find(el=>el.type === 'weapon')?.nr &&
+            room === this.truthSource.find(el=>el.type === 'room')?.nr
+        ){
+            this.callback('won', {character, weapon, room, who: this.turn});
+            this.turn = -1;
+        }else{
+            this.callback('nwon', {character, weapon, room});
+            this.players[this.turn].lost = true;
+            this.nextTurn();
+        }
     }
 
     guessAnswer({nr, type}: SugestieCard, ownerId: string){
