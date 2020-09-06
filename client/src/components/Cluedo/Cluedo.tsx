@@ -1,6 +1,7 @@
 import React from 'react';
 import useCluedo from '../../hooks/useCluedo';
 import Started from '../Started/Started';
+import './Cluedo.css'
 
 interface Props{
     gameId: string
@@ -18,11 +19,19 @@ const Cluedo: React.FC<Props> = ({ gameId }) =>{
         </div>
     ) : (
         <div className="Cluedo">
-            cluedo
+            <h1>Cluedo</h1>
+            <div className="players">
+
             {players.map((player, index) =>
                 <div className="player" key={index}>{player.id}</div>
-            )}
-            <button onClick={handleReadyClick}>click to be {!ready ? 'ready' : 'unready' }</button>
+                )}
+            </div>
+            
+            <div className="ready">
+                <div>{ready ? 'Ready' : 'Not Ready' }</div>
+                <button onClick={handleReadyClick}>click to be {!ready ? 'ready' : 'not ready' }</button>
+            </div>
+
         </div>
     ));
 }

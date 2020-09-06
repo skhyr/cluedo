@@ -1,4 +1,5 @@
 import React from 'react';
+import './Login.css';
 
 interface Props{
     login: (name: string)=>void;
@@ -17,7 +18,7 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) =>{
 return(
     <div className="Login">
         <form onSubmit={handleSubmit}>
-            <input type="text" name="name"/>
+            <input type="text" name="name" placeholder="name" />
             <button>zaloguj</button>
         </form>
     </div>

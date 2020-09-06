@@ -23,6 +23,15 @@ io.on('connection', (socket) => {
 export const gameRoomService = new GameRoomService();
 gameRoomService.newGame(socketHandler.gameCallback);
 gameRoomService.newGame(socketHandler.gameCallback);
+gameRoomService.newGame(socketHandler.gameCallback);
+gameRoomService.newGame(socketHandler.gameCallback);
+gameRoomService.newGame(socketHandler.gameCallback);
+gameRoomService.newGame(socketHandler.gameCallback);
+gameRoomService.newGame(socketHandler.gameCallback);
+gameRoomService.newGame(socketHandler.gameCallback);
+gameRoomService.newGame(socketHandler.gameCallback);
+gameRoomService.newGame(socketHandler.gameCallback);
+gameRoomService.newGame(socketHandler.gameCallback);
 
 app.use(express.json());
 app.use(cors());

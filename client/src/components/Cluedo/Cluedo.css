@@ -1,0 +1,9 @@
+.Cluedo{
+    background-color: rgb(31, 31, 31);
+    color: white;
+    min-height: 100vh;
+}
+
+.Cluedo h1{
+    margin-top: 0;
+}

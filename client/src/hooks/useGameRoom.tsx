@@ -8,8 +8,9 @@ type dataType = {
 export default (interval: number, callback: any)=>{
     const [gameRooms, setGameRooms] = useState<dataType[]>([]);
 
-    useEffect(()=>{
-        fetch('http://localhost:5000/getGames', {
+
+    const fe = () =>{
+      fetch('http://localhost:5000/getGames', {
             method: 'GET',
             headers: {
               "Access-Control-Allow-Origin": "*",
@@ -23,6 +24,11 @@ export default (interval: number, callback: any)=>{
           }).catch(err=>{
               console.log(err);
           });
+    }
+
+    useEffect(()=>{
+        fe();
+        setInterval( fe,  interval );
     }, [])
 
 

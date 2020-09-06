@@ -1,0 +1,50 @@
+.Games{
+    background-color: rgb(31, 31, 31);
+    min-height: 100vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    cursor: cell;
+}
+
+.Games .gameRow{
+    display: flex;
+    margin: 10px 20px;
+    padding: 5px;
+}
+
+.Games .gameRow.gameRow:not(:first-of-type):hover{
+    background-color: rgba(255, 255, 255, 0.096);
+}
+
+.Games .gameRow .id{
+    flex: 1;
+}
+.Games .gameRow:not(:first-of-type) .id{
+    color: rgba(255, 255, 255, 0.479);
+}
+
+.Games .gameRow button{
+    background-color: rgb(108, 219, 117);
+    width: 200px;
+    cursor: pointer;
+    border: none;
+    border-top: rgb(156, 253, 164) 3px solid;
+    border-left: rgb(156, 253, 164) 3px solid;
+    border-bottom: rgb(36, 143, 45) 3px solid;
+    border-right: rgb(36, 143, 45) 3px solid;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+    font-size: .6rem;
+}
+.Games .gameRow:first-of-type button{
+    background-color: rgba(0, 0, 128, 0);
+    outline: none;
+    border: none;
+    pointer-events: none;
+}
+
+
+.Games .gameRow .inside{
+    width: 200px;
+}
