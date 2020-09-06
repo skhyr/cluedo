@@ -3,6 +3,8 @@ import './Started.css';
 import Sugestia from '../Sugestia/Sugestia';
 import Paper from '../Paper/Paper';
 import names from '../../utils/names';
+import { useTransition, animated } from 'react-spring';
+import Dice from '../Dice/Dice';
 
 interface Props{
     players:{
@@ -52,6 +54,15 @@ const genBoard = () =>{
 const Started: React.FC<Props> = ( { players, dice, turn, move, player, guess, makeGuess, guessAnswer, selectToGuess, winner, lost}) =>{
 
     const [ board ] = useState(genBoard());
+
+    const transition = useTransition(guess, item=>item.type+item.nr, {
+        from: {opacity: 0},
+        enter: {opacity: 1},
+        leave: {opacity: 0},
+        config: {
+            duration: 500,
+        }
+    })
 
     return(<>
         <div className="Started">
@@ -123,16 +134,17 @@ const Started: React.FC<Props> = ( { players, dice, turn, move, player, guess, m
                 )}
                 </div>
                 <div className={ lost ? "guess lost": "guess" }>
-                    {guess.map(card=>
-                        <div className={card.owner? "CardBox withOwner":"CardBox"}>
-                            <Sugestia type={card.type} nr={card.nr}/>
-                            <div className="owner">{card.owner}</div>
-                        </div>
+
+                    {transition.map(({item, key, props})=>
+                            <animated.div className={item.owner? "CardBox withOwner":"CardBox"} style={props} >
+                                <Sugestia type={item.type} nr={item.nr}/>
+                                <div className="owner">{item.owner}</div>
+                            </animated.div>
                     )}
+
                 </div>
                 <div className="dice">
-                    {dice.result} 
-                    <button onClick={dice.throw}>dice</button>
+                    <Dice result={dice.result} throwDice={dice.throw} />
                 </div>
                 <div className="makeGuess">
                     <button onClick={makeGuess}> guess </button>

@@ -5,7 +5,7 @@ export default ()=>{
     const { token, setToken } = useContext(MainContext);
 
     const login = (name: string) =>{
-            fetch('https://kludo.herokuapp.com/login', {
+            fetch('http://localhost:5000/login', {
             method: 'POST',
             headers: {
                 "Access-Control-Allow-Origin": "*",

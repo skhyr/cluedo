@@ -1,6 +1,6 @@
 import React from 'react';
 import useCluedo from '../../hooks/useCluedo';
-import Started from './Started';
+import Started from '../Started/Started';
 
 interface Props{
     gameId: string

@@ -22,11 +22,12 @@ export default (io: socketio.Server)=>{
                 console.log(game.countReady());
             });
 
-            socket.on('throwDice', (token, gameId)=>{
+            socket.on('throwDice', (token, gameId, callback)=>{
                 const { name } = <{name: string}>jwt.verify(token, 'tokenSecret');
                 const game = gameRoomService.getGame(gameId);
-                if(!game) return;
-                if(game.isTurn(name)) game.throwDice();
+                if(!game) return callback(-1);
+                if(game.isTurn(name)) return callback( game.throwDice() );
+                return callback(-1);
             });
 
             socket.on('move', (to, token, gameId)=>{

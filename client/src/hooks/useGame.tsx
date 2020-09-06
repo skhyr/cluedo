@@ -5,7 +5,7 @@ export default (token: string, gameId: string)=>{
     const [joined, setJoined] = useState(false);
 
     useEffect(()=>{
-        fetch('https://kludo.herokuapp.com/joinGame', {
+        fetch('http://localhost:5000/joinGame', {
           method: 'POST',
           headers: {
             "Access-Control-Allow-Origin": "*",

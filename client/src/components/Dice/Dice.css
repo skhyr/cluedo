@@ -1,0 +1,13 @@
+.Dice{
+    background-color: white;
+    height: 50px;
+    width: 50px;
+    margin: 10px auto;
+    border-radius: 4px;
+    border: 1px solid black;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}

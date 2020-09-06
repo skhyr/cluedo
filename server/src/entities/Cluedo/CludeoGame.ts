@@ -148,10 +148,11 @@ export class CludoGame{
     }
 
     throwDice(){
-        if(this.turnCheckList.dice) return;
+        if(this.turnCheckList.dice) return -1;
         this.dice = rand(1, 6) + rand(1, 6);
         this.callback('diceThrown');
         this.turnCheckList.dice = true;
+        return this.dice;
     }
 
     makeGuess(character: number, weapon: number, room: number, who: number){

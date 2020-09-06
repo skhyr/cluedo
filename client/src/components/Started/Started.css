@@ -16,7 +16,7 @@
     justify-content: space-around;
 }
 
-.player{
+.Started .player{
     color: rgb(177, 177, 177);
     font-size: 1.1em;
     font-weight: 400;
@@ -199,12 +199,16 @@
     height: 95%;
 }
 
-.sidebar > .guess > .CardBox.withOwner > .Sugestia::after{
+.sidebar > .guess > .CardBox > .Sugestia::after{
     content: '';
-    background-color: rgba(0, 0, 0, 0.644);
     height: 100%;
     width: 100%;
     position: absolute;
+    transition: background-color .5s ease-out;
+}
+
+.sidebar > .guess > .CardBox.withOwner > .Sugestia::after{
+    background-color: rgba(0, 0, 0, 0.644);
 }
 
 .sidebar > .guess > div > .owner{

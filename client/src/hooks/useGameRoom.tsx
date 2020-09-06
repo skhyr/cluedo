@@ -9,7 +9,7 @@ export default (interval: number, callback: any)=>{
     const [gameRooms, setGameRooms] = useState<dataType[]>([]);
 
     useEffect(()=>{
-        fetch('https://kludo.herokuapp.com/getGames', {
+        fetch('http://localhost:5000/getGames', {
             method: 'GET',
             headers: {
               "Access-Control-Allow-Origin": "*",

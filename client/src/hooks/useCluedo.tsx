@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import io from 'socket.io-client';
 import { MainContext } from '../contexts/MainContext';
-import { Sugestia } from '../components';
 
 type sugestia = {
         type: 'character'|'weapon'|'room',
@@ -23,7 +22,7 @@ export default (gameId: string)=>{
 
     const [gameStarted, setGameStarted] = useState(false);
     const [ready, setReady] = useState(false);
-    const [socket] = useState(io('https://kludo.herokuapp.com'));
+    const [socket] = useState(io('http://localhost:5000'));
     const [diceResult, setDiceResult] = useState(6);
     const [turn, setTurn] = useState(0);
     const [guess, setGuess] = useState<sugestia[]>([]);
@@ -121,7 +120,12 @@ export default (gameId: string)=>{
     }
 
     const throwDice = () =>{
-        socket.emit('throwDice', token, gameId);
+        const lastResult = diceResult;
+        setDiceResult(-1)
+        socket.emit('throwDice', token, gameId, (status: number)=>{
+            if( status > 0) setDiceResult( status );
+            else setDiceResult( lastResult );
+        });
     }
 
     const move = (x: number, y: number) =>{

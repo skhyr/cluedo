@@ -12,7 +12,7 @@ interface Props{
 const Sugestia: React.FC<Props> = ({ nr, type, click }) =>{
 
     return(
-        <div className="Sugestia">
+        <div className="Sugestia" >
             <div className="descTop">
                 {type}
             </div>
